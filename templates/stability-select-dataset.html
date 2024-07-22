@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<div class="page-title mb-4">
+    <h2>Sozlash</h2>
+</div>
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <form action="{% url 'stability' %}" method="post" class="form form-horizontal">
+                {% csrf_token %}
+                <div class="form-body" id="form-body">
+                    <div class="row">
+                        <div class="col-md-2"><label>Tanlanma</label></div>
+                        <div class="col-md-10" form-group>
+                            <select name="dataset" class="choices" id="ds">
+                                {% for d in datasets %}
+                                <option value="{{ d.id }}">{{ d.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-end mt-3">
+                            <button type="button" id="select-ds" class="btn btn-outline-primary me-1 mb-1">Tanlash</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><label>Sinflarni tanlang</label></div>
+                        <div class="col-md-5" id="k1"></div>
+                        <div class="col-md-5" id="k2"></div>
+                    </div>
+                    <div class="col-sm-12 d-flex justify-content-end mt-3 d-none" id="submit-btn">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Alomatlar turg'unligini hisoblash</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'assets-old/vendors/choices.js/choices.min.css' %}" />
+{% endblock %}
+
+{% block myjs %}
+<script src="{% static 'assets-old/vendors/choices.js/choices.min.js' %}"></script>
+<script>
+
+    function getCookie(key) {
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    }
+
+    function class_select() {
+        let k1 = $("input[name='k1']:checked").val()
+        let k2 = $("input[name='k2']:checked").val()
+        if (k1 && k2)
+            document.getElementById('submit-btn').classList.remove('d-none');
+    }
+    $("#select-ds").click(function (e) {
+        let id = document.getElementById('ds').value;
+        $.ajax({
+            url: "{% url 'select_dataset_ajax' %}",
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify({ id: id, }),
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+            },
+            success: (data) => {
+                let k1r = "", k2r = "";
+                for (let c of data['class_column_values']) {
+                    k1r += `<div class="form-check">
+                        <input class="form-check-input" type="radio" name="k1" value="${c}" onclick="class_select()">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                ${c}
+                            </label>
+                    </div>`;
+                    k2r += `<div class="form-check">
+                        <input class="form-check-input" type="radio" name="k2" value="${c}" onclick="class_select()">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                ${c}
+                            </label>
+                    </div>`;
+                }
+                document.getElementById('k1').innerHTML = "<b><label class='text-bold'>K1:</label></b><br>" + k1r;
+                document.getElementById('k2').innerHTML = "<b><label class='text-bold'>K2:</label></b><br>" + k2r;
+                document.getElementById('submit-btn').classList.add('d-none');
+                if (data['contains_nans'] == true) {
+                    document.getElementById('d_propusk').classList.remove('d-none');
+                }
+                else {
+                    document.getElementById('d_propusk').classList.add('d-none');
+                }
+            },
+            error: (error) => {
+                console.log('e');
+                console.log(error);
+            }
+        });
+    });
+</script>
+{% endblock %}

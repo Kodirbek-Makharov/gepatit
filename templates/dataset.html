@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<div class="page-title mb-4">
+    <h3>Tanlanma: {{ dataset.name }}</h3>
+</div>
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <ul>
+                <li class="mb-2">Obyektlar soni: {{ shape.0 }}</li>
+                <li class="mb-2">Alomatlar soni: {{ shape.1 }}</li>
+                <li class="mb-2">Sinf alomat: {{ dataset.class_column|default_if_none:"<b>Aniqlanmagan</b>"}}
+                    <a class="button" href="#" onclick="$('#target').toggle();">[Tanlash]</a>
+                    <div id="target" style="display: none;">
+                        <form action="{% url 'change_class_column' id=dataset.id %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col col-md-10">
+                                    <select name="column_name" class="choices">
+                                        {% for c in columns_all %}
+                                        <option value="{{ c }}">{{ c }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col col-md-2">
+                                    <button class="btn btn-primary" type="submit">Saqlash</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li class="mb-2">Alomatlar:
+                    <ul>
+                        {% for c,i, t in columns %}
+                        <li>{{c}} ({{ t|yesno:"Nominal,Miqdoriy" }}) <a href="{% url 'changetype' id=dataset.id type_n=i %}">[O'zgartirish]</a> </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="mb-2">Tanlanmaning ko'rinishi (birinchi 10 ta qator)
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-bordered border-primary">
+                            <tr>
+                                <th>№</th>
+                                {% for col in df.columns %}
+                                <th>
+                                    {{col}}
+                                </th>
+                                {% endfor %}
+                            </tr>
+                            {% for row in df.itertuples %}
+                            <tr>
+                                {% for cell in row %}
+                                <td>
+                                    {% if cell|is_float %}
+                                    {{ cell|floatformat:3 }}
+                                    {%else %}
+                                    {{ cell }}
+                                    {% endif %}
+                                </td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'assets/vendors/choices.js/choices.min.css' %}" />
+{% endblock %}
+
+{% block myjs %}
+<script src="{% static 'assets/vendors/choices.js/choices.min.js' %}"></script>
+{% endblock %}

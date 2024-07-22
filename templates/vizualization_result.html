@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<div class="page-title mb-4">
+    <h2>Tanlanma: {{ dataset.name }}</h2>
+</div>
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>PCA usuli orqali</h3>
+                    <img src="data:image/png;base64,{{pca}}" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h3>t-SNE usuli orqali</h3>
+                    <img src="data:image/png;base64,{{tsne}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

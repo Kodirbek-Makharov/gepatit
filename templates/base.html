@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>HBV infeksiyasi</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Health Care Medical Html5 Template">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+	<meta name="author" content="Themefisher">
+	<meta name="generator" content="Themefisher Novena HTML Template v1.0">
+
+	<meta name="theme-name" content="novena" />
+
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.png' %}" />
+
+	<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/icofont/icofont.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/slick-carousel/slick/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/slick-carousel/slick/slick-theme.css' %}">
+
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+	{% block mycss %} {% endblock mycss %}
+
+</head>
+
+<body id="top">
+
+	<header>
+		<div class="header-top-bar">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6">
+						<ul class="top-bar-info list-inline-item pl-0 mb-0">
+							<li class="list-inline-item"><a href="mailto:info@airi.uz"><i class="icofont-support-faq mr-2"></i>info@airi.uz</a></li>
+							<li class="list-inline-item"><i class="icofont-location-pin mr-2"></i>17A, Boz-2, Tashkent, 100125, Uzbekistan</li>
+						</ul>
+					</div>
+					<div class="col-lg-6">
+						<div class="text-lg-right top-right-bar mt-2 mt-lg-0">
+							<a href="tel:+23-345-67890">
+								<span>Qo'ng'iroq qiling: </span>
+								<span class="h4">+99890 125 07 36</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navigation" id="navbar">
+			<div class="container">
+				<a class="navbar-brand" href="/">
+					<img src="{% static 'assets/images/logo.png' %}" alt="" class="img-fluid">
+					Hepatitis B
+				</a>
+
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="icofont-navigation-menu"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarmain">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a class="nav-link" href="/">Bosh sahifa</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'loyiha-haqida' %}">Loyiha haqida</a></li>
+
+						<li class="nav-item"><a class="nav-link" href="#">Aloqa</a></li>
+
+						{% if user.is_authenticated %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gepatit B<i class="icofont-thin-down"></i></a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown05">
+								<li><a class="dropdown-item" href="{% url 'stability' %}">Alomatlar turg'unligi</a></li>
+								<li><a class="dropdown-item" href="{% url 'classification' %}">Tasniflash aniqligi</a></li>
+								<li><a class="dropdown-item" href="{% url 'new_object' %}">Yangi bemorni tekshirish</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Tizimdan chiqish</a></li>
+						{% else %}
+						<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Tizimga kirish</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+	{% block content %} {% endblock content %}
+
+
+	<footer class="footer section gray-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 mr-auto col-sm-6">
+					<div class="widget mb-5 mb-lg-0">
+						<div class="logo mb-4">
+							<img src="{% static 'assets/images/logo.png' %}" alt="" class="img-fluid">
+						</div>
+						<!-- <p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p> -->
+
+						<ul class="list-inline footer-socials mt-4">
+							<li class="list-inline-item">
+								<a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a>
+							</li>
+							<li class="list-inline-item">
+								<a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a>
+							</li>
+							<li class="list-inline-item">
+								<a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-6 col-sm-6 mt-4">
+					<div class="widget mb-5 mb-lg-0">
+						<h4 class="text-capitalize mb-3">Department</h4>
+						<div class="divider mb-4"></div>
+
+						<ul class="list-unstyled footer-menu lh-35">
+							<li><a href="#!">Surgery </a></li>
+							<li><a href="#!">Wome's Health</a></li>
+							<li><a href="#!">Radiology</a></li>
+							<li><a href="#!">Cardioc</a></li>
+							<li><a href="#!">Medicine</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-sm-6 mt-4">
+					<div class="widget mb-5 mb-lg-0">
+						<h4 class="text-capitalize mb-3">Support</h4>
+						<div class="divider mb-4"></div>
+
+						<ul class="list-unstyled footer-menu lh-35">
+							<li><a href="#!">Terms & Conditions</a></li>
+							<li><a href="#!">Privacy Policy</a></li>
+							<li><a href="#!">Company Support </a></li>
+							<li><a href="#!">FAQuestions</a></li>
+							<li><a href="#!">Company Licence</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-sm-6 mt-4">
+					<div class="widget widget-contact mb-5 mb-lg-0">
+						<h4 class="text-capitalize mb-3">Biz bilan aloqa</h4>
+						<div class="divider mb-4"></div>
+
+						<div class="footer-contact-block mb-4">
+							<div class="icon d-flex align-items-center">
+								<i class="icofont-email mr-3"></i>
+								<span class="h6 mb-0">24/7 xizmat ko'rsatish</span>
+							</div>
+							<h4 class="mt-2"><a href="mailto:info@airi.uz">info@airi.uz</a></h4>
+						</div>
+
+						<div class="footer-contact-block">
+							<div class="icon d-flex align-items-center">
+								<i class="icofont-support mr-3"></i>
+								<span class="h6 mb-0">Dush - Juma: 08:30 - 18:00</span>
+							</div>
+							<h4 class="mt-2"><a href="tel:+23-345-67890">+998 71 263 41 98</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-btm py-4 ">
+				<div class="row align-items-center justify-content-between">
+					<div class="col-lg-12 text-center">
+						<div class="copyright">
+							Copyright &copy; 2023</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-4">
+						<a class="backtop scroll-top-to" href="#top">
+							<i class="icofont-long-arrow-up"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="{% static 'assets/plugins/jquery/jquery.js' %}"></script>
+	<!-- <script src="{% static 'assets-old/js/jquery-3.7.0.min.js' %}"></script> -->
+
+	<script src="{% static 'assets/plugins/bootstrap/bootstrap.min.js' %}"></script>
+	<script src="{% static 'assets/plugins/slick-carousel/slick/slick.min.js' %}"></script>
+	<script src="{% static 'assets/plugins/shuffle/shuffle.min.js' %}"></script>
+
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA"></script>
+	<script src="{% static 'assets/plugins/google-map/gmap.js' %}"></script>
+
+	<script src="{% static 'assets/js/script.js' %}"></script>
+
+	{% block myjs %} {% endblock myjs %}
+
+</body>
+
+</html>

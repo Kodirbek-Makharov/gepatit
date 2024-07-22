@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<section class="section mysection gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Tasniflash natijalari</h2>
+                    <div class="divider mx-auto my-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-hover table-bordered">
+                    <tr class="fw-bold text-center">
+                        <td colspan=" 6">Tasniflash natijalari</td>
+                    </tr>
+                    <tr>
+                        <td width="12%">Naïve Bayes</td>
+                        <td width="12%">kNN</td>
+                        <td width="12%">SVM</td>
+                        <td width="12%">Random Forest</td>
+                        <td width="12%">Decision Tree</td>
+                        <td width="12%">LDA</td>
+                    </tr>
+                    {% for tasnif in tasniflash %}
+                    <tr>
+                        <td>{{ tasnif.nbayes|floatformat:3 }}</td>
+                        <td>{{ tasnif.knn|floatformat:3 }}</td>
+                        <td>{{ tasnif.svm|floatformat:3 }}</td>
+                        <td>{{ tasnif.random_forest|floatformat:3 }}</td>
+                        <td>{{ tasnif.dtree|floatformat:3 }}</td>
+                        <td>{{ tasnif.lda|floatformat:3 }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'assets/vendors/choices.js/choices.min.css' %}" />
+{% endblock %}
+
+{% block myjs %}
+<script src="{% static 'assets/vendors/choices.js/choices.min.js' %}"></script>
+<script>
+
+    function getCookie(key) {
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    }
+
+    function class_select() {
+        let k1 = $("input[name='k1']:checked").val()
+        let k2 = $("input[name='k2']:checked").val()
+        if (k1 && k2)
+            document.getElementById('submit-btn').classList.remove('d-none');
+    }
+
+    $("#select-ds").click(function (e) {
+        let id = document.getElementById('ds').value;
+
+        $.ajax({
+            url: "{% url 'select_dataset_ajax' %}",
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify({ id: id, }),
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+            },
+            success: (data) => {
+                let k1r = "", k2r = "";
+                for (let c of data['class_column_values']) {
+                    k1r += `<div class="form-check">
+                        <input class="form-check-input" type="radio" name="k1" value="${c}" onclick="class_select()">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                ${c}
+                            </label>
+                    </div>`;
+                    k2r += `<div class="form-check">
+                        <input class="form-check-input" type="radio" name="k2" value="${c}" onclick="class_select()">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                ${c}
+                            </label>
+                    </div>`;
+                }
+                document.getElementById('k1').innerHTML = "<b><label class='text-bold'>K1:</label></b><br>" + k1r;
+                document.getElementById('k2').innerHTML = "<b><label class='text-bold'>K2:</label></b><br>" + k2r;
+                document.getElementById('submit-btn').classList.add('d-none');
+                if (data['contains_nans'] == true) {
+                    document.getElementById('d_propusk').classList.remove('d-none');
+                }
+                else {
+                    document.getElementById('d_propusk').classList.add('d-none');
+                }
+            },
+            error: (error) => {
+                console.log('e');
+                console.log(error);
+            }
+        });
+    });
+</script>
+{% endblock %}

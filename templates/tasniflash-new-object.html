@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<section class="section mysection gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Yangi bemor haqida qaror qabul qilish</h2>
+                    <div class="divider mx-auto my-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-hover table-bordered">
+                    <tr class="fw-bold text-center">
+                        <td>Alomat nomi</td>
+                        <td>Alomat qiymati</td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Yosh</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Jins</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">B/DNK</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">qHBsAg</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">RNK</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Gemoglabin</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Eritrotsit</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Rang ko'rsatkich</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Trombotsit</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Leykotsit</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">S/Ya</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Monotsit</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Limfotsit</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">ECHT</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">ALT</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">AST</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Bilirubin</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Kreatinin</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Machevina</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">UZI</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Belok</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Fibroskan</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Albumin</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">PVT</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">SHF</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="id" id="id" value="{{id}}">
+                <input type="hidden" name="k1" id="k1" value="{{k1}}">
+                <input type="hidden" name="k2" id="k2" value="{{k2}}">
+                <input type="hidden" name="pt" id="pt" value="{{pt}}">
+                <button type="submit" class="btn btn-primary me-1 mb-1 " id="select-ds">Tasniflash</button>
+
+                <div class="modal fade" id="results_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Tekshiruv natijalari</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="natija" class="mt-3 mb-3" style="font-weight: bolder;">
+                                    <div id="sinf"></div>
+                                    <div class="progress mt-4 p-3" style="position: relative; overflow: visible; background: linear-gradient(to left, red 0%, yellow 50%, green 100%)">
+                                        <!-- <div id="proba" class="progress-bar" style="margin-left:67%; width:33%; background-color: white;"></div> -->
+                                        <div id="line" style="position: absolute; width:2px; height: 150%; margin-left: 25%; margin-top: -5%;  border: 2px solid blue;">
+                                            <div id="linetext" style="position: relative; margin-left:-20px; margin-top: -12px; font-size: 12pt;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div>Gepatit B - norma</div>
+                                        <div>Jigar sirrozi</div>
+                                    </div>
+                                    <div id="inf" class="mt-2"></div>
+                                    <div id="alwb"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
+
+{% block myjs %}
+<script>
+
+    function getCookie(key) {
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    }
+
+    $("#select-ds").click(function (e) {
+        let id = document.getElementById('id').value;
+        let k1 = document.getElementById('k1').value;
+        let k2 = document.getElementById('k2').value;
+        let pt = document.getElementById('pt').value;
+        const columns = [...document.getElementsByName("c[]")].map(el => parseFloat(el.value));
+        $.ajax({
+            url: "{% url 'new_object' %}",
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify({ id: id, k1: k1, k2: k2, pt: pt, columns: columns }),
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+            },
+            success: (data) => {
+                sinf_names = { "Blood Donor": 'Kasal emas', "Hepatitis": 'Gepatit B', "Fibrosis": 'Jigar fibrozi', "Cirrhosis": 'Jigar sirrozi' }
+                // sinf_names = { "1": 'Gepatit B', "2": 'Jigar sirrozi' }
+                console.log(data);
+                document.getElementById("sinf").innerHTML = "Sinf: " + sinf_names[data['sinf']];// + `, aniqligi: ${(data['probas'][1] * 100).toFixed(2)}%`;
+                document.getElementById("inf").innerHTML = "Ishonch darajasi: " + data['informativnost'].toPrecision(3);
+                // document.getElementById("proba").style = `margin-left:${data['probas'][1] * 100}%; width:${data['probas'][0] * 100}%; background-color: white;`;
+                document.getElementById("line").style = `position: absolute; width:2px; height: 150%; margin-left: ${data['probas'][1] * 100}%; margin-top: -5%;  border: 2px solid blue;`
+                document.getElementById("linetext").textContent = `${(data['probas'][1] * 100).toFixed(2)}%`;
+                $("#results_modal").modal()
+                // alwb = document.getElementById('alwb');
+                // alwb.innerHTML = "Qiymatlarning mos kelmasligi:<br>"
+                // ccs = document.getElementsByName('column_names');
+                // console.log(ccs);
+                // data.allowability.forEach(element => {
+                //     alwb.innerHTML += `<li class=alwb>${ccs[element[0]].textContent}, ${ccs[element[1]].textContent}</li>`;
+                // });
+            },
+            error: (error) => {
+                console.log('e');
+                console.log(error);
+            }
+        });
+    });
+</script>
+
+<style>
+    .alwb {
+        margin-left: 40px !important;
+    }
+</style>
+{% endblock %}

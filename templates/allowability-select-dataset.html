@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<div class="page-title mb-4">
+    <h2>Alomat juftligi bo'yicha interval chegaralarini hisoblash</h2>
+</div>
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <form action="{% url 'allowability' %}" method="post" class="form form-horizontal">
+                {% csrf_token %}
+                <div class="form-body" id="form-body">
+                    <div class="row">
+                        <div class="col-md-2"><label>Tanlanma</label></div>
+                        <div class="col-md-10" form-group>
+                            <select name="dataset" class="choices" id="ds">
+                                {% for d in datasets %}
+                                <option value="{{ d.id }}">{{ d.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 d-flex justify-content-end mt-3" id="submit-btn">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Hisoblash</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block mycss %}
+<link rel="stylesheet" href="{% static 'assets/vendors/choices.js/choices.min.css' %}" />
+{% endblock %}
+
+{% block myjs %}
+<script src="{% static 'assets/vendors/choices.js/choices.min.js' %}"></script>
+{% endblock %}

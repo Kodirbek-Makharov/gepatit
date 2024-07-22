@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<div class="page-title mb-4">
+    <h3>Tanlanmalar</h3>
+</div>
+<section class="section">
+    <div class="card">
+        <!-- <div class="card-header">
+            <h4 class="card-title">Default Layout</h4>
+        </div> -->
+        <div class="card-body">
+            <table class="table table-hover">
+                <tr>
+                    <th>Tanlanma nomi</th>
+                    <th></th>
+                </tr>
+                {% for d in datasets %}
+                <tr>
+                    <td>{{d.name}}</td>
+                    <td><a href="{% url 'datasets' id=d.id %}">Ko'rish</a></td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
