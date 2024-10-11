@@ -66,6 +66,24 @@
 				<div class="collapse navbar-collapse" id="navbarmain">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="/">Bosh sahifa</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ma'lumotlar<i class="icofont-thin-down"></i></a>
+							<ul class="dropdown-menu" aria-labelledby="dropdown05">
+								<li><a class="dropdown-item" href="{% url 'about-gepatit' %}">Gepatit B haqida</a></li>
+								<li><a class="dropdown-item" href="{% url 'about-sirroz' %}">Sirroz haqida</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Цирроз  диагностикаси.pdf' %}" target="_blank">Sirroz diagnostikasi</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Цирроз мутахассислар маслахати.pdf' %}" target="_blank">Sirroz mutaxassislar maslahati</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Цирроз асорати асцитни бошкариш.pdf' %}" target="_blank">Sirroz asorati astitni boshqarish</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Циррозда_жигар_энцефалопатисини_бошкариш.pdf' %}" target="_blank">Sirrozda jigar ensefalopatisini boshqarish</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Циррозда парацентез муолажаси.pdf' %}" target="_blank">Sirrozda parasentez muolajasi</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Циррозда_овкатланиш_ва_саркопенияни_бошкариш.pdf' %}" target="_blank">Sirrozda ovqatlanish va sarkopeniyani boshqarish</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Циррозда сув истеъмоли.pdf' %}" target="_blank">Sirrozda suv istemoli</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Циррозда этиологик даволаш.pdf' %}" target="_blank">Sirrozda etiologik davolash</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Циррознинг скрининг алгоритми.pdf' %}" target="_blank">Sirrozning skrining algoritmi</a></li>
+								<li><a class="dropdown-item" href="{% static 'files/Циррозда_кулланиладиган_дори_воситалар_руйхати.pdf' %}" target="_blank">Sirrozda qo'llaniladigan dori vositalari ro'yxati</a></li>
+							</ul>
+						</li>
+
 						<li class="nav-item"><a class="nav-link" href="{% url 'loyiha-haqida' %}">Loyiha haqida</a></li>
 
 						<li class="nav-item"><a class="nav-link" href="#">Aloqa</a></li>
@@ -74,9 +92,12 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gepatit B<i class="icofont-thin-down"></i></a>
 							<ul class="dropdown-menu" aria-labelledby="dropdown05">
-								<li><a class="dropdown-item" href="{% url 'stability' %}">Alomatlar turg'unligi</a></li>
+								<li><a class="dropdown-item" href="{% url 'stability' %}">Alomatlar informativligi</a></li>
 								<li><a class="dropdown-item" href="{% url 'classification' %}">Tasniflash aniqligi</a></li>
 								<li><a class="dropdown-item" href="{% url 'new_object' %}">Yangi bemorni tekshirish</a></li>
+								<li><a class="dropdown-item" href="{% url 'bemorlar_list' %}">Bemorlar ro'yxati</a></li>
+								<li><a class="dropdown-item" href="{% url 'statistika' %}">Statistika</a></li>
+
 							</ul>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Tizimdan chiqish</a></li>

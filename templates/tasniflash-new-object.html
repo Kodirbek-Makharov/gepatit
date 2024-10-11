@@ -25,27 +25,47 @@
                         <td>Alomat qiymati</td>
                     </tr>
                     <tr>
+                        <td name="column_names">FISH</td>
+                        <td><input type="text" name="fio" id="fio" class="columns" value=""></td>
+                    </tr>
+                    <tr>
                         <td name="column_names">Yosh</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
                         <td name="column_names">Jins</td>
+                        <td><select name="c[]">
+                                <option value="1">Erkak</option>
+                                <option value="2">Ayol</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">HBV DNK (miqdoriy)</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">B/DNK</td>
+                        <td name="column_names">qHBsAg (miqdoriy)</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">qHBsAg</td>
+                        <td name="column_names">Anti HCV</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">RNK</td>
+                        <td name="column_names">Anti HDV</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">Gemoglabin</td>
+                        <td name="column_names">HBV RNK (sifat)</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">HDV RNK (miqdoriy)</td>
+                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                    </tr>
+                    <tr>
+                        <td name="column_names">Gemoglobin</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
@@ -65,7 +85,7 @@
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">S/Ya</td>
+                        <td name="column_names">Segment yadroli neytrofill</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
@@ -97,15 +117,26 @@
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">Machevina</td>
+                        <td name="column_names">Mochevina</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">UZI</td>
-                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                        <td name="column_names">Ultra tovush tekshiruvi</td>
+                        <td><select name="c[]" id="">
+                                <option value="1">surunkali gepatit</option>
+                                <option value="2">surunkali gepatit + yog'li gepator</option>
+                                <option value="3">SP</option>
+                                <option value="4">SP + splenomegaliya</option>
+                                <option value="5">SP + splenomegaliya + PG</option>
+                                <option value="6">SP + splenomegaliya + PG + astsit</option>
+                                <option value="7">SP + obrazovaniya + splenomegaliya + PG</option>
+                                <option value="8">SP + obrazovaniya</option>
+                                <option value="9">SP + obrazovaniya + splenomegaliya + PG + astsit</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
-                        <td name="column_names">Belok</td>
+                        <td name="column_names">Umumiy oqsil</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
@@ -117,22 +148,23 @@
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">PVT</td>
+                        <td name="column_names">Virusga qarshi terapiya</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                     <tr>
-                        <td name="column_names">SHF</td>
+                        <td name="column_names">Ishqoriy fosfotaza</td>
                         <td><input type="text" name="c[]" class="columns" value=""></td>
                     </tr>
                 </table>
                 <input type="hidden" name="id" id="id" value="{{id}}">
+                <input type="hidden" name="bid" id="bemor_id" value="0">
                 <input type="hidden" name="k1" id="k1" value="{{k1}}">
                 <input type="hidden" name="k2" id="k2" value="{{k2}}">
                 <input type="hidden" name="pt" id="pt" value="{{pt}}">
                 <button type="submit" class="btn btn-primary me-1 mb-1 " id="select-ds">Tasniflash</button>
 
                 <div class="modal fade" id="results_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">Tekshiruv natijalari</h5>
@@ -140,24 +172,63 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <div id="natija" class="mt-3 mb-3" style="font-weight: bolder;">
-                                    <div id="sinf"></div>
-                                    <div class="progress mt-4 p-3" style="position: relative; overflow: visible; background: linear-gradient(to left, red 0%, yellow 50%, green 100%)">
-                                        <!-- <div id="proba" class="progress-bar" style="margin-left:67%; width:33%; background-color: white;"></div> -->
-                                        <div id="line" style="position: absolute; width:2px; height: 150%; margin-left: 25%; margin-top: -5%;  border: 2px solid blue;">
-                                            <div id="linetext" style="position: relative; margin-left:-20px; margin-top: -12px; font-size: 12pt;"></div>
+                            <div class="modal-body" id="results_modal_body">
+                                <div id="ainatija">
+                                    <div id="natija" class="mt-3 mb-3" style="font-weight: bolder; border-bottom: 1px solid black;">
+                                        <!-- <div id="sinf"></div> -->
+                                        <div class="progress mt-4 p-3">
+                                            <div id="line">
+                                                <div id="linetext"></div>
+                                            </div>
                                         </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div>Gepatit B - norma</div>
+                                            <div>Jigar sirrozi</div>
+                                        </div>
+                                        <div id="inf" class="mt-2"></div>
+                                        <div id="alwb"></div>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div>Gepatit B - norma</div>
-                                        <div>Jigar sirrozi</div>
+
+                                    <div id="natija13" class="mt-5 mb-5" style="font-weight: bolder; border-bottom: 1px solid black">
+                                        <!-- <div id="sinf13"></div> -->
+                                        <div class="progress mt-4 p-3">
+                                            <div id="line13">
+                                                <div id="linetext13"></div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div>Gepatit B - norma</div>
+                                            <div>Karsinoma</div>
+                                        </div>
+                                        <div id="inf13" class="mt-2"></div>
+                                        <div id="alwb13"></div>
                                     </div>
-                                    <div id="inf" class="mt-2"></div>
-                                    <div id="alwb"></div>
+
+                                    <div id="natija23" class="mt-5 mb-5" style="font-weight: bolder;  border-bottom: 1px solid black">
+                                        <!-- <div id="sinf23"></div> -->
+                                        <div class="progress mt-4 p-3">
+                                            <div id="line23">
+                                                <div id="linetext23"></div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div>Jigar sirrozi</div>
+                                            <div>Karsinoma</div>
+                                        </div>
+                                        <div id="inf23" class="mt-2"></div>
+                                        <div id="alwb23"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a class="btn btn-primary" id="link_to_fullinfo">Ko'rsatkichlarni hisoblash</a>
+                                </div>
+                                <div id="chegara" class="mt-5 mb-5" style="font-weight: bolder;">
+                                    <h4>Qiymatlarning chegaralarga mosligi</h4>
                                 </div>
                             </div>
                             <div class="modal-footer">
+
+                                <button type="button" class="btn btn-secondary" onclick="topdf(false, true)">Export</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
                             </div>
                         </div>
@@ -180,32 +251,71 @@
         var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
         return keyValue ? keyValue[2] : null;
     }
+    function ishonch_lingv(a) {
+        if (a >= 0 && a < 0.4) return "ma'lumotlar yetarli emas";
+        if (a >= 0.4 && a < 0.7) return "ma'lumotlar qisman yetarli";
+        if (a >= 0.7 && a < 0.9) return "ma'lumotlar yetarli";
+        if (a >= 0.9 && a <= 1) return "ma'lumotlar to'liq";
+    }
 
     $("#select-ds").click(function (e) {
         let id = document.getElementById('id').value;
         let k1 = document.getElementById('k1').value;
         let k2 = document.getElementById('k2').value;
         let pt = document.getElementById('pt').value;
+        let fio = document.getElementById('fio').value;
+        let bid = document.getElementById('bemor_id').value;
         const columns = [...document.getElementsByName("c[]")].map(el => parseFloat(el.value));
         $.ajax({
             url: "{% url 'new_object' %}",
             type: "POST",
             dataType: "json",
-            data: JSON.stringify({ id: id, k1: k1, k2: k2, pt: pt, columns: columns }),
+            data: JSON.stringify({ id: id, bid: bid, fio: fio, k1: k1, k2: k2, pt: pt, columns: columns }),
             headers: {
                 "X-Requested-With": "XMLHttpRequest",
                 "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
             },
             success: (data) => {
-                sinf_names = { "Blood Donor": 'Kasal emas', "Hepatitis": 'Gepatit B', "Fibrosis": 'Jigar fibrozi', "Cirrhosis": 'Jigar sirrozi' }
-                // sinf_names = { "1": 'Gepatit B', "2": 'Jigar sirrozi' }
+                // sinf_names = { "Blood Donor": 'Kasal emas', "Hepatitis": 'Gepatit B', "Fibrosis": 'Jigar fibrozi', "Cirrhosis": 'Jigar sirrozi' }
+                sinf_names = { "1": 'Gepatit B', "2": 'Jigar sirrozi', "3": 'Karsinoma' }
                 console.log(data);
-                document.getElementById("sinf").innerHTML = "Sinf: " + sinf_names[data['sinf']];// + `, aniqligi: ${(data['probas'][1] * 100).toFixed(2)}%`;
-                document.getElementById("inf").innerHTML = "Ishonch darajasi: " + data['informativnost'].toPrecision(3);
-                // document.getElementById("proba").style = `margin-left:${data['probas'][1] * 100}%; width:${data['probas'][0] * 100}%; background-color: white;`;
-                document.getElementById("line").style = `position: absolute; width:2px; height: 150%; margin-left: ${data['probas'][1] * 100}%; margin-top: -5%;  border: 2px solid blue;`
-                document.getElementById("linetext").textContent = `${(data['probas'][1] * 100).toFixed(2)}%`;
-                $("#results_modal").modal()
+                data12 = data['results12'];
+                data13 = data['results13'];
+                data23 = data['results23'];
+
+                data12['informativnost'].toPrecision(3)
+                // document.getElementById("sinf").innerHTML = "Sinf: " + sinf_names[data12['sinf']];// + `, aniqligi: ${(data12['probas'][1] * 100).toFixed(2)}%`;
+                document.getElementById("inf").innerHTML = `Qarorga ishonch darajasi (0-1), qaror qilish uchun: ${ishonch_lingv(data12['informativnost'].toPrecision(3))} (${data12['informativnost'].toPrecision(3)})`;
+                document.getElementById("line").style = `position: absolute; width:2px; height: 150%; margin-left: ${data12['probas'][1] * 100}%; margin-top: -3%;  border: 2px solid blue;`
+                document.getElementById("linetext").textContent = `${(data12['probas'][1] * 100).toFixed(2)}%`;
+
+                // document.getElementById("sinf13").innerHTML = "Sinf: " + sinf_names[data13['sinf']];// + `, aniqligi: ${(data13['probas'][1] * 100).toFixed(2)}%`;
+                document.getElementById("inf13").innerHTML = `Qarorga ishonch darajasi (0-1), qaror qilish uchun: ${ishonch_lingv(data13['informativnost'].toPrecision(3))} (${data13['informativnost'].toPrecision(3)})`;
+                document.getElementById("line13").style = `position: absolute; width:2px; height: 150%; margin-left: ${data13['probas'][1] * 100}%; margin-top: -3%;  border: 2px solid blue;`
+                document.getElementById("linetext13").textContent = `${(data13['probas'][1] * 100).toFixed(2)}%`;
+
+                // document.getElementById("sinf23").innerHTML = "Sinf: " + sinf_names[data23['sinf']];// + `, aniqligi: ${(data23['probas'][1] * 100).toFixed(2)}%`;
+                document.getElementById("inf23").innerHTML = `Qarorga ishonch darajasi (0-1), qaror qilish uchun: ${ishonch_lingv(data23['informativnost'].toPrecision(3))} (${data23['informativnost'].toPrecision(3)})`;
+                document.getElementById("line23").style = `position: absolute; width:2px; height: 150%; margin-left: ${data23['probas'][1] * 100}%; margin-top: -3%;  border: 2px solid blue;`
+                document.getElementById("linetext23").textContent = `${(data23['probas'][1] * 100).toFixed(2)}%`;
+
+                document.getElementById("bemor_id").value = data['bid'];
+
+
+                saidov_dict = data['saidov'];
+                normalar = data['normalar'];
+                nomlar = data['nomlar'];
+                bemord = data['bemord'];
+                document.getElementById('chegara').innerHTML = '';
+                let ns = "<td>Ko'satkich</td><td width=100>Qiymat</td><td>Norma</td>";
+                for (const [key, value] of Object.entries(normalar)) {
+                    ns += `<tr><td>${nomlar[key]}</td><td>${bemord[key]}</td><td>${normalar[key]}</td></tr>`;
+                }
+                document.getElementById('chegara').innerHTML = `<table class=table-bordered>${ns}</table>`;
+                document.getElementById("link_to_fullinfo").setAttribute('href', '/bemorlar/' + document.getElementById("bemor_id").value)
+
+                $("#results_modal").modal();
+                // topdf(true, false);
                 // alwb = document.getElementById('alwb');
                 // alwb.innerHTML = "Qiymatlarning mos kelmasligi:<br>"
                 // ccs = document.getElementsByName('column_names');
@@ -220,11 +330,248 @@
             }
         });
     });
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+    window.jsPDF = window.jspdf.jsPDF;
+    function topdf(sv = true, dw = false, fio = "asd") {
+        window.html2canvas = html2canvas;
+        // var doc = new jsPDF('p', 'pt', 'a4');
+        var source = window.document.getElementById("results_modal_body");
+        var ainatija = window.document.getElementById("ainatija");
+        var sdnatija = window.document.getElementById("chegara");
+        let bid = window.document.getElementById("bemor_id").value;
+
+
+        const doc = new jsPDF("p", "mm", "a4");
+
+        html2canvas(ainatija).then(function (canvas) {
+            var img = canvas.toDataURL("image/png");
+            l = {
+                orientation: 'p',
+                unit: 'pt',
+                format: 'a4',
+                compress: true,
+                fontSize: 8,
+                lineHeight: 1,
+                autoSize: true,
+                printHeaders: true,
+                // scale: 0.5
+            };
+            var doc = new jsPDF(l);
+            var vrach = "{{request.user.first_name}}"
+            doc.setFontSize(20);
+            doc.text(60, 30, 'Jigar sirrozi va gepatokarsinomani erta tashhislash');
+            doc.setFontSize(17);
+            doc.text(10, 55, 'Bemor: ' + document.getElementById('fio').value);
+            doc.text(10, 75, 'Shifokor: ' + vrach);
+            doc.text(10, 95, 'Sana: ' + new Date().toLocaleDateString());
+            doc.addImage(img, 'JPEG', 10, 110);
+
+            var base = doc.html(sdnatija, {
+                html2canvas: {
+                    scale: 0.90,
+                },
+                margin: [20, 5, 20, 5],
+                autoPaging: 'text',
+                x: 0,
+                y: 350,
+                width: 655,
+                windowWidth: 675,
+                callback: function (doc) {
+
+
+                    // const bbb = doc.output('bloburl');
+                    // window.open(bbb, '_system', 'location=yes');
+
+                    if (sv) {
+                        let formdata = new FormData();
+                        // var fayl = btoa(doc.output());
+
+                        // let fayl = new FileReader().readAsDataURL(doc.output());
+                        var blobPDF = new Blob([doc.output('blob')], { type: 'application/pdf' });
+                        let fayl = blobPDF;
+                        // let fayl = doc.output();
+
+                        formdata.append('fayl', fayl);
+                        formdata.append('id', bid);
+
+                        $.ajax({
+                            url: "{% url 'new_objects_result_file' %}",
+                            type: "POST",
+                            async: false,
+                            cache: false,
+                            contentType: false,
+                            enctype: 'multipart/form-data',
+                            processData: false,
+                            data: formdata, //JSON.stringify({ id: id, fio: fio, k1: k1, k2: k2, pt: pt, columns: columns }),
+                            headers: {
+                                "X-Requested-With": "XMLHttpRequest",
+                                "X-CSRFToken": getCookie("csrftoken"),  // don't forget to include the 'getCookie' function
+                            },
+                            success: (data) => {
+                                console.log(data);
+                            },
+                            error: (error) => {
+                                console.log('e');
+                                console.log(error);
+                            }
+                        });
+                    }
+                    if (dw)
+                        doc.save('download.pdf');
+                },
+            });
+
+            // doc.save('test.pdf');
+        });
+
+
+        // var base = doc.html(source, {
+        //     html2canvas: {
+        //         scale: 0.30,
+        //     },
+        //     margin: [20, 5, 20, 5],
+        //     autoPaging: 'text',
+        //     x: 0,
+        //     y: 0,
+        //     width: 655,
+        //     windowWidth: 675,
+        //     callback: function (doc) {
+        //         doc.save('download.pdf');
+        //     },
+        // });
+
+        /*html2canvas(source).then((canvas) => {
+            const imgWidth = 500;
+            const pageHeight = 750;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+            heightLeft -= pageHeight;
+            const doc = new jsPDF('p', 'pt', 'a4');
+            doc.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                doc.addPage();
+                doc.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+                heightLeft -= pageHeight;
+            }
+            doc.save('Downld.pdf');
+        });*/
+
+        /*html2canvas(source).then(function (canvas) {
+            var img = canvas.toDataURL("image/png");
+            l = {
+                orientation: 'p',
+                unit: 'pt',
+                format: 'a4',
+                dpi: 300,
+                letterRendering: true,
+                width: 1080,
+                height: 1920,
+                compress: true,
+                fontSize: 3,
+                lineHeight: 1,
+                autoSize: true,
+                printHeaders: true,
+                // scale: 0.5
+            };
+            var doc = new jsPDF(l);
+            doc.addImage(img, 'JPEG', 10, 10);
+            doc.save('test.pdf');
+        });*/
+
+        // html2canvas(source, {
+        //     // dpi: 300, letterRendering: true,
+        //     onrendered: function (canvas) {
+        //         var doc = new jsPDF('p', 'pt', 'a4');
+        //         doc.html(source, {
+        //             callback: function (doc) {
+        //                 doc.save();
+        //             }
+        //         });
+
+        //     }
+        // })
+
+
+        // doc.html(source, {
+        //     callback: function (doc) {
+        //         doc.save();
+        //     }
+        // });
+    }
+
+    $("#results_modal").on('shown.bs.modal', topdf);
+
 </script>
 
 <style>
     .alwb {
         margin-left: 40px !important;
+    }
+
+    #chegara li {
+        margin-left: 10px;
+    }
+
+    #natija>.progress,
+    #natija12>.progress,
+    #natija13>.progress,
+    #natija23>.progress {
+        position: relative;
+        overflow: visible;
+        background-image: linear-gradient(to left, red 0%, yellow 50%, green 100%);
+        /* , -webkit-linear-gradient(to left, red 0%, yellow 50%, green 100%) no-repeat border-box; */
+    }
+
+    #line,
+    #line12,
+    #line13,
+    #line23 {
+        position: absolute;
+        width: 2px;
+        height: 150%;
+        margin-left: 25%;
+        margin-top: -5%;
+        border: 2px solid blue;
+    }
+
+    #linetext,
+    #linetext12,
+    #linetext13,
+    #linetext23 {
+        position: relative;
+        margin-left: -20px;
+        margin-top: -12px;
+        font-size: 12pt;
+    }
+
+    /* .modal-lg #line,
+    .modal-lg #line12,
+    .modal-lg #line13,
+    .modal-lg #line23 {
+        position: absolute;
+        width: 2px;
+        height: 250%;
+        margin-left: 25%;
+        margin-top: 5%;
+        border: 15px solid blue;
+    } */
+
+    .modal-lg #linetext,
+    .modal-lg #linetext12,
+    .modal-lg #linetext13,
+    .modal-lg #linetext23 {
+        position: relative;
+        margin-left: -20px;
+        margin-top: -12px;
+        font-size: 12pt;
     }
 </style>
 {% endblock %}

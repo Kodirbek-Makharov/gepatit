@@ -1,0 +1,525 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<section class="section mysection gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Bemor</h2>
+                    <div class="divider mx-auto my-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <table class="table-hover">
+                    <tr>
+                        <td width="150">FISH:</td>
+                        <td>{{bemor.fio}}</td>
+                    </tr>
+                    <tr>
+                        <td>Yosh:</td>
+                        <td>{{bemor.yosh}}</td>
+                    </tr>
+                    <tr>
+                        <td>Jins:</td>
+                        <td>{% if bemor.pol == 1 %}
+                            erkak
+                            {%else%}
+                            ayol
+                            {%endif%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kasalligi:</td>
+                        <td>
+                            {% if bemor.klass == 1 %}
+                            Gepatit B
+                            {% elif bemor.klass == 2 %}
+                            Jigar sirrozi
+                            {% elif bemor.klass == 3 %}
+                            Karsinoma
+                            {% else %}
+                            Aniqlanmagan
+                            {%endif%}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Izoh</td>
+                        <td>{% if bemor.izoh is None %}
+
+                            {% else %}
+                            {{bemor.izoh}}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>HBV DNK (miqdoriy):</td>
+                        <td>{{bemor.vdnk}}</td>
+                    </tr>
+                    <tr>
+                        <td>qHBsAg (miqdoriy):</td>
+                        <td>{{bemor.qHBsAg}}</td>
+                    </tr>
+                    <tr>
+                        <td>Anti HCV:</td>
+                        <td>{{bemor.antihcv}}</td>
+                    </tr>
+                    <tr>
+                        <td>Anti HDV:</td>
+                        <td>{{bemor.antihdv}}</td>
+                    </tr>
+                    <tr>
+                        <td>HBV RNK (sifat):</td>
+                        <td>{{bemor.rnk_vgv}}</td>
+                    </tr>
+                    <tr>
+                        <td>HDV RNK (miqdoriy):</td>
+                        <td>{{bemor.rnk_vgd}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gemoglobin:</td>
+                        <td>{{bemor.gemoglabin}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eritrotsit:</td>
+                        <td>{{bemor.eritrotsit}}</td>
+                    </tr>
+                    <tr>
+                        <td>Rang:</td>
+                        <td>{{bemor.rang}}</td>
+                    </tr>
+                    <tr>
+                        <td>Trombosit:</td>
+                        <td>{{bemor.trombosit}}</td>
+                    </tr>
+                    <tr>
+                        <td>Leykosit:</td>
+                        <td>{{bemor.leykosit}}</td>
+                    </tr>
+                    <tr>
+                        <td>Segment yadroli neytrofill:</td>
+                        <td>{{bemor.sya}}</td>
+                    </tr>
+                    <tr>
+                        <td>Monotsit:</td>
+                        <td>{{bemor.monotsit}}</td>
+                    </tr>
+                    <tr>
+                        <td>Limfotsit:</td>
+                        <td>{{bemor.limfotsit}}</td>
+                    </tr>
+                    <tr>
+                        <td>ECHT:</td>
+                        <td>{{bemor.echt}}</td>
+                    </tr>
+                    <tr>
+                        <td>ALT:</td>
+                        <td>{{bemor.alt}}</td>
+                    </tr>
+                    <tr>
+                        <td>AST:</td>
+                        <td>{{bemor.ast}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bilirubin:</td>
+                        <td>{{bemor.bilurbin}}</td>
+                    </tr>
+                    <tr>
+                        <td>Kreatinin:</td>
+                        <td>{{bemor.kreatinin}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mochevina:</td>
+                        <td>{{bemor.mochevina}}</td>
+                    </tr>
+                    <tr>
+                        <td>Ultra tovush tekshiruvi:</td>
+                        <td>
+                            {% if bemor.uzi == 1 %}
+                            surunkali gepatit
+                            {% elif bemor.uzi == 2 %}
+                            surunkali gepatit + yog'li gepator
+                            {% elif bemor.uzi == 3 %}
+                            SP
+                            {% elif bemor.uzi == 4 %}
+                            SP + splenomegaliya
+                            {% elif bemor.uzi == 5 %}
+                            SP + splenomegaliya + PG
+                            {% elif bemor.uzi == 6 %}
+                            SP + splenomegaliya + PG + astsit
+                            {% elif bemor.uzi == 7 %}
+                            SP + obrazovaniya + splenomegaliya + PG
+                            {% elif bemor.uzi == 8 %}
+                            SP + obrazovaniya
+                            {% elif bemor.uzi == 9 %}
+                            SP + obrazovaniya + splenomegaliya + PG + astsit
+                            {%endif%}
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Umumiy oqsil:</td>
+                        <td>{{bemor.belok}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fibroskan:</td>
+                        <td>{{bemor.fibroskan}}</td>
+                    </tr>
+                    <tr>
+                        <td>Albumin:</td>
+                        <td>{{bemor.albumin}}</td>
+                    </tr>
+                    <tr>
+                        <td>Virusga qarshi terapiya:</td>
+                        <td>{{bemor.pvt}}</td>
+                    </tr>
+                    <tr>
+                        <td>Ishqoriy fosfotaza:</td>
+                        <td>{{bemor.shf}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-lg-7" id="myGroup">
+                <p>
+                    {% if bemor.klass is None %}
+                    <a class=" btn btn-primary" data-toggle="collapse" href="#klasstanlash" role="button" aria-expanded="false" aria-controls="klasstanlash">
+                        Kasallik belgilash
+                    </a>
+                    {% endif %}
+
+                    <a class="btn btn-primary" data-toggle="collapse" href="#meldd" role="button" aria-expanded="false" aria-controls="meldd">
+                        MELD
+                    </a>
+                    <a class="btn btn-primary" data-toggle="collapse" href="#childd" role="button" aria-expanded="false" aria-controls="childd">
+                        Child-Pugh
+                    </a>
+                </p>
+                <div class="collapse" id="klasstanlash" data-parent="#myGroup">
+                    <div class="row">
+                        <form method="post" action="{% url 'bemor-tashhis' bemor.id %}">
+                            {% csrf_token %}
+                            <table class="table-hover">
+                                <tr>
+                                    <td>Kasalligi:</td>
+                                    <td><select name="klass" class="form-control">
+                                            <option value="1">Gepatit B</option>
+                                            <option value="2">Sirroz</option>
+                                            <option value="3">Karsinoma</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Izoh:</td>
+                                    <td><textarea name="izoh" class="form-control" rows="10" cols="30"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" value="Saqlash" class="btn btn-primary">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="collapse" id="meldd" data-parent="#myGroup">
+                    <div class="row">
+                        <h3>MELD</h3>
+                        <table class="table">
+                            <tr>
+                                <td>MHO</td>
+                                <td><input type="text" id="mho" onchange="meld()"></td>
+                            </tr>
+                            <tr>
+                                <td>NA</td>
+                                <td><input type="text" id="na" onchange="meld()"></td>
+                            </tr>
+                        </table>
+                        <div id="resultmeld"></div>
+                    </div>
+                </div>
+                <div class="collapse" id="childd" data-parent="#myGroup">
+                    <div class="row">
+                        <h3>CHILD</h3>
+                        <form name="ChildTurPuScore_form" id="ChildTurPuScore_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+                            <table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" align="left"><span class="medCalcFontCCTabBold">Энцефалопатия </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel1" name="cc1" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">Отсутствует (1 балл)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel2" name="cc1" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">Степень 1: Смена настроения/спутанность сознания (2 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel3" name="cc1" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">Степень 2: Неподобающее поведение, развивающийся ступор, сонливость (2 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel4" name="cc1" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');"> Степень 3: Выраженная спутанность сознания, ступор, но возможно вывести из ступора (3 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel5" name="cc1" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');">Степень 4: В состоянии комы/не реагирует (3 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="left"><span class="medCalcFontCCTabBold">Асцит </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel6" name="cc2" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');">Отсутствует (1 балл)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel7" name="cc2" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel7');">Легкий (2 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel8" name="cc2" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">Умеренный (3 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="left"><span class="medCalcFontCCTabBold">Билирубин </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel9" name="cc3" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');">&lt;&nbsp;2&nbsp;мг/дл (1 балл)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel10" name="cc3" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');">2–3&nbsp;мг/дл (2 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel11" name="cc3" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');">&gt;&nbsp;3&nbsp;мг/дл (3 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="left"><span class="medCalcFontCCTabBold">Альбумин </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel12" name="cc4" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel12');">&gt;&nbsp;3,5&nbsp;г/дл (1 балл)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel13" name="cc4" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel13');">2,8–3,5&nbsp;г/дл (2 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel14" name="cc4" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel14');">&lt;&nbsp;2,8&nbsp;г/дл (3 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" align="left"><span class="medCalcFontCCTabBold">Удлинение протромбинового времени </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel15" name="cc5" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel15');">Менее 4&nbsp;секунд выше контрольного/МНО &lt;&nbsp;1,7 (1 балл)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel16" name="cc5" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel16');">4–6 секунд выше контрольного/МНО 1,7–2,3 (2 балла(ов))</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20"><br></td>
+                                        <td align="right"><input type="radio" id="togel17" name="cc5" onclick="ChildTurPuScore_fx();"></td>
+                                        <td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel17');">Более 6&nbsp;секунд выше контрольного/МНО &gt;&nbsp;2,3 (3 балла(ов))</span></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <div id="calc_result">
+                                <span class="medCalcFontCCTabBold">
+                                    Общий результат:
+                                </span>
+                                <input type="text" size="6" id="cctotal" onfocus="blur();">
+                                <input type="reset" name="reset" value="Перезагрузить  форму"><br>
+                                <h4>Интерпретация балла CTP</h4>
+                                <center>
+                                    <table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+                                        <tbody>
+                                            <tr id="rr1_1" bgcolor="">
+                                                <td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">5 - 6 баллы:</span></td>
+                                                <td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Класс&nbsp;A по Чайлд-Пью</span></td>
+                                            </tr>
+                                            <tr id="rr1_2" bgcolor="">
+                                                <td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">7 - 9 баллы:</span></td>
+                                                <td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Класс&nbsp;B по Чайлд-Пью</span></td>
+                                            </tr>
+                                            <tr id="rr1_3" bgcolor="#8ab2be">
+                                                <td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">10 - 15 баллы:</span></td>
+                                                <td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Класс&nbsp;C по Чайлд-Пью</span></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </center>
+                                <br>&nbsp;<br>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block myjs %}
+
+<script>
+    function meld() {
+        let inr = document.getElementById('mho').value;
+        let na = document.getElementById('na').value;
+        let kr = parseFloat('{{ bemor.kreatinin }}');
+        let blrb = parseFloat('{{ bemor.bilurbin }}');
+        let ln = Math.log;
+        let MELD_score = (9.57 * ln(kr)) + (3.78 * ln(blrb)) + (11.2 * ln(inr)) + 6.43;
+        document.getElementById('resultmeld').innerHTML = MELD_score;
+
+    }
+
+    function rrclr() {
+        document.getElementById('rr1_1').bgColor = '';
+        document.getElementById('rr1_2').bgColor = '';
+        document.getElementById('rr1_3').bgColor = '';
+    }
+    function ChildTurPuScore_fx() {
+        with (document.ChildTurPuScore_form) {
+
+            Score = 0.0;
+            doCalc = true;
+
+            rbchk = false;
+            if (cc1[0].checked) {
+                rbchk = true; Score = Score + 1;
+            }
+            if (cc1[1].checked) {
+                rbchk = true; Score = Score + 2;
+            }
+            if (cc1[2].checked) {
+                rbchk = true; Score = Score + 2;
+            }
+            if (cc1[3].checked) {
+                rbchk = true; Score = Score + 3;
+            }
+            if (cc1[4].checked) {
+                rbchk = true; Score = Score + 3;
+            }
+            if (!rbchk) doCalc = false;
+            rbchk = false;
+            if (cc2[0].checked) {
+                rbchk = true; Score = Score + 1;
+            }
+            if (cc2[1].checked) {
+                rbchk = true; Score = Score + 2;
+            }
+            if (cc2[2].checked) {
+                rbchk = true; Score = Score + 3;
+            }
+            if (!rbchk) doCalc = false;
+            rbchk = false;
+            if (cc3[0].checked) {
+                rbchk = true; Score = Score + 1;
+            }
+            if (cc3[1].checked) {
+                rbchk = true; Score = Score + 2;
+            }
+            if (cc3[2].checked) {
+                rbchk = true; Score = Score + 3;
+            }
+            if (!rbchk) doCalc = false;
+            rbchk = false;
+            if (cc4[0].checked) {
+                rbchk = true; Score = Score + 1;
+            }
+            if (cc4[1].checked) {
+                rbchk = true; Score = Score + 2;
+            }
+            if (cc4[2].checked) {
+                rbchk = true; Score = Score + 3;
+            }
+            if (!rbchk) doCalc = false;
+            rbchk = false;
+            if (cc5[0].checked) {
+                rbchk = true; Score = Score + 1;
+            }
+            if (cc5[1].checked) {
+                rbchk = true; Score = Score + 2;
+            }
+            if (cc5[2].checked) {
+                rbchk = true; Score = Score + 3;
+            }
+            if (!rbchk) doCalc = false;
+            if (doCalc) {
+                cctotal.value = Score;
+                if (cctotal.value == 'NaN') cctotal.value = '';
+            }
+            else {
+                Score = null;
+                cctotal.value = '';
+                if (typeof rrclr == 'function') { rrclr(); };
+                document.ChildTurPuScore_form.cctotal.value = '';
+            }
+
+
+
+
+            if (doCalc) {
+                rrclr();
+                if ((Score >= 5) && (Score <= 6)) {
+                    document.getElementById('rr1_1').bgColor = '#8ab2be';
+                }
+                if ((Score >= 7) && (Score <= 9)) {
+                    document.getElementById('rr1_2').bgColor = '#8ab2be';
+                }
+                if ((Score >= 10) && (Score <= 15)) {
+                    document.getElementById('rr1_3').bgColor = '#8ab2be';
+                }
+
+
+            }
+        }
+    }
+</script>
+
+<style>
+    .medCalcFontCCTabBold {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

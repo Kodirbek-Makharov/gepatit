@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path("", views.index, name="index"),
     path("hepatitis-b", views.gepatit_haqida, name="about-gepatit"),
+    path("sirroz", views.sirroz_haqida, name="about-sirroz"),
     path("hepatitis-b-davolash", views.gepatit_davolash, name="davolash-gepatit"),
     path("loyiha-haqida", views.loyiha_haqida, name="loyiha-haqida"),
 
@@ -20,4 +21,11 @@ urlpatterns = [
     path("classification", views.classification, name="classification"),
     path("allowability", views.allowability, name="allowability"),
     path("new-obj", views.new_object, name="new_object"),
+    path("bemorlar", views.bemorlar, name="bemorlar_list"),
+    path("bemorlar/<int:id>", views.bemor, name="bemor_info"),
+    path("bemorlar/<int:id>/pdf", views.bemor_pdf, name="bemor_info_pdf"),
+    path("new_objects_result_file", views.new_objects_result_file, name="new_objects_result_file"),
+    path("statistika", views.stat, name="statistika"),
+    path("bemor-tashhis/<int:id>", views.bemor_set_class, name="bemor-tashhis"),
+    
 ]

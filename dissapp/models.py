@@ -68,13 +68,20 @@ class Classification(models.Model):
     lda = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
 
+
 class Bemorlar(models.Model):
     fio = models.CharField(max_length=255)
     yosh = models.IntegerField()
     pol = models.IntegerField()
     vdnk = models.BigIntegerField()
     qHBsAg = models.BigIntegerField()
-    rnk = models.BigIntegerField()
+
+    antihcv = models.BigIntegerField()
+    antihdv = models.BigIntegerField()
+    rnk_vgv = models.BigIntegerField()
+    rnk_vgd = models.BigIntegerField()
+
+    # rnk = models.BigIntegerField()
     gemoglabin = models.FloatField()
     eritrotsit = models.FloatField()
     rang = models.FloatField()
@@ -99,4 +106,13 @@ class Bemorlar(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     turi = models.IntegerField(default=None, null=True, blank=True) # 1 = train 
 
+    def user_directory_path(instance, filename):
+        from datetime import datetime
+        _datetime = datetime.now()
+        datetime_str = _datetime.strftime("%Y/%m/%d")
+        return '{2}/{0}-{1}'.format(instance.id, ".pdf", datetime_str)
+    
+    izoh = models.TextField(null=True, blank=True)
+    tekshiruv_fayli = models.FileField(upload_to =user_directory_path, null=True, blank=True) #'uploads/%Y/%m/%d/'
+    doktor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
 

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<section class="section mysection gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Statistika</h2>
+                    <div class="divider mx-auto my-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Jins bo'yicha kasallikning tarqalishi</h3>
+                <div style="width: 800px;"><canvas id="acquisitions"></canvas></div>
+                <br><br>
+                <h3>Yosh oralig'i bo'yicha kasallikning tarqalishi</h3>
+                <div style="width: 1000px;"><canvas id="yosh_boyicha"></canvas></div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block mycss %}
+{% endblock %}
+
+{% block myjs %}
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var o1 = "{{ soni.0}}";
+    var o2 = "{{ soni.1}}";
+    var o3 = "{{ soni.2}}";
+    var q1 = "{{ soni.3}}";
+    var q2 = "{{ soni.4}}";
+    var q3 = "{{ soni.5}}";
+    let c = new Chart(
+        document.getElementById('acquisitions'),
+        {
+            type: 'bar',
+            options: {
+                animation: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            },
+            data: {
+                labels: ["O'g'il", "Qiz"],
+                datasets: [
+                    {
+                        label: "Gepatit B",
+                        data: [o1, q1]
+                    },
+                    {
+                        label: "Jigar sirrozi",
+                        data: [o2, q2]
+                    },
+                    {
+                        label: "Karsinoma",
+                        data: [o3, q3]
+                    }
+                ]
+            }
+        }
+    );
+
+    // yosh bo'yicha
+    var y11 = "{{ yosh.0}}";
+    var y21 = "{{ yosh.1}}";
+    var y31 = "{{ yosh.2}}";
+    var y41 = "{{ yosh.3}}";
+    var y51 = "{{ yosh.4}}";
+    var y12 = "{{ yosh.5}}";
+    var y22 = "{{ yosh.6}}";
+    var y32 = "{{ yosh.7}}";
+    var y42 = "{{ yosh.8}}";
+    var y52 = "{{ yosh.9}}";
+    var y13 = "{{ yosh.10}}";
+    var y23 = "{{ yosh.11}}";
+    var y33 = "{{ yosh.12}}";
+    var y43 = "{{ yosh.13}}";
+    var y53 = "{{ yosh.14}}";
+    let cy = new Chart(
+        document.getElementById('yosh_boyicha'),
+        {
+            type: 'bar',
+            options: {
+                animation: false,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            },
+            data: {
+                labels: ["0-18", "19-35", "36-50", "51-65", "65-100"],
+                datasets: [
+                    {
+                        label: "Gepatit B",
+                        data: [y11, y21, y31, y41, y51]
+                    },
+                    {
+                        label: "Jigar sirrozi",
+                        data: [y12, y22, y32, y42, y52]
+                    },
+                    {
+                        label: "Karsinoma",
+                        data: [y13, y23, y33, y43, y53]
+                    }
+                ]
+            }
+        }
+    );
+</script>
+{% endblock %}

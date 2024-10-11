@@ -165,7 +165,7 @@ def ClassificationAccuracyWorldMethodsNewObject(X, y, x):
     from sklearn.preprocessing import StandardScaler
     from sklearn.svm import SVC
 
-    gnb = make_pipeline(StandardScaler(), SVC(gamma="auto", probability=True))
+    gnb = make_pipeline(StandardScaler(), SVC(gamma="auto", probability=True, random_state=0))
     model = gnb.fit(Xtrain.values, train_labels)
     predictive_labels = gnb.predict(Xtest)
     predictive_probas = gnb.predict_proba(Xtest)
@@ -191,7 +191,7 @@ def ClassificationAccuracyWorldMethodsNewObject(X, y, x):
     print(test_labels)
     print(predictive_labels)
     results.append(accuracy_score(test_labels, predictive_labels))"""
-    gnb = DecisionTreeClassifier()
+    gnb = DecisionTreeClassifier(random_state=0)
     model = gnb.fit(Xtrain.values, train_labels)
     predictive_labels = gnb.predict(Xtest)
     predictive_probas = gnb.predict_proba(Xtest)

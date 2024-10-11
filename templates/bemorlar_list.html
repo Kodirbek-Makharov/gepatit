@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+{% load static %}
+
+{% block content %}
+
+{% include 'messages.html' %}
+
+<section class="section mysection gray-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Bemorlar ro'yxati</h2>
+                    <div class="divider mx-auto my-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form method="get">
+                    <input type="text" name="fish">
+                    <input type="submit" value="Qidirish" class="btn btn-info">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <table class="table table-hover table-bordered">
+                    <tr>
+                        <td>FISH</td>
+                        <td>Yoshi</td>
+                        <td>Jinsi</td>
+                        <td>Kasalligi</td>
+                        <td>Turi</td>
+                        <td></td>
+                    </tr>
+                    {% for b in bemorlar %}
+                    <tr>
+                        <td>{{ b.fio }}</td>
+                        <td>{{ b.yosh }}</td>
+                        <td>{{ b.pol }}</td>
+                        <td>{% if b.klass == 1 %}surunkali gepatit{% elif b.klass == 2 %}karsinoma{%elif b.klass == 3 %}sirroz {%else%} {%endif%}</td>
+                        <td>{% if b.turi == 1 %}o'rgatuvchi{%else%} bemor {%endif %}</td>
+                        <td>
+                            <a href="/bemorlar/{{b.id}}">To'liq ma'lumot</a><br>
+                            {% if b.turi != 1 %}
+                            <a href="/bemorlar/{{b.id}}/pdf" target="_blank">Tekshiruv ma'lumotlari</a><br>
+                            <!-- <a href="/bemorlar/{{b.id}}">O'rgatuvchi tanlanmaga qo'shish</a> -->
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
