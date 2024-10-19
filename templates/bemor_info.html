@@ -188,12 +188,6 @@
             </div>
             <div class="col-lg-7" id="myGroup">
                 <p>
-                    {% if bemor.klass is None %}
-                    <a class=" btn btn-primary" data-toggle="collapse" href="#klasstanlash" role="button" aria-expanded="false" aria-controls="klasstanlash">
-                        Kasallik belgilash
-                    </a>
-                    {% endif %}
-
                     <a class="btn btn-primary" data-toggle="collapse" href="#meldd" role="button" aria-expanded="false" aria-controls="meldd">
                         MELD
                     </a>
@@ -201,35 +195,6 @@
                         Child-Pugh
                     </a>
                 </p>
-                <div class="collapse" id="klasstanlash" data-parent="#myGroup">
-                    <div class="row">
-                        <form method="post" action="{% url 'bemor-tashhis' bemor.id %}">
-                            {% csrf_token %}
-                            <table class="table-hover">
-                                <tr>
-                                    <td>Kasalligi:</td>
-                                    <td><select name="klass" class="form-control">
-                                            <option value="1">Gepatit B</option>
-                                            <option value="2">Sirroz</option>
-                                            <option value="3">Karsinoma</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Izoh:</td>
-                                    <td><textarea name="izoh" class="form-control" rows="10" cols="30"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <input type="submit" value="Saqlash" class="btn btn-primary">
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                </div>
 
                 <hr>
                 <div class="collapse" id="meldd" data-parent="#myGroup">

@@ -849,8 +849,8 @@ def new_object(request, id=None):
         saidov_results= None
         # print(saidov_results)
         norma = dict()
-        norma['yosh'] = '30'
-        norma['pol'] = '2'
+        norma['yosh'] = ''
+        norma['pol'] = ''
         norma['vdnk'] = '2'
         norma['qHBsAg'] = '2'
         norma['rnk_vgv'] = '0-2'
