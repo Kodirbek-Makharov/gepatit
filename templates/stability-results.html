@@ -30,9 +30,9 @@
                     {% for stability, st13, st23, feature in stb %}
                     <tr>
                         <td>{{ nomlar|get_item:feature }}</td>
-                        <td>{{ stability|floatformat:3 }}</td>
-                        <td>{{ st13|floatformat:3 }}</td>
-                        <td>{{ st23|floatformat:3 }}</td>
+                        <td> {% if 0 <= stability and stability < 0.56 %} juda past {% elif 0.55 < stability and stability < 0.72 %} past {% elif 0.71 < stability and stability < 0.86 %} o'rta {% else %} yuqori {% endif %} ({{ stability|floatformat:3 }})</td>
+                        <td>{% if 0 <= st13 and st13 < 0.56 %} juda past {% elif 0.55 < st13 and st13 < 0.72 %} past {% elif 0.71 < st13 and st13 < 0.86 %} o'rta {% else %} yuqori {% endif %}({{ st13|floatformat:3 }})</td>
+                        <td>{% if 0 <= st23 and st23 < 0.56 %} juda past {% elif 0.55 < st23 and st23 < 0.72 %} past {% elif 0.71 < st23 and st23 < 0.86 %} o'rta {% else %} yuqori {% endif %}({{ st23|floatformat:3 }})</td>
                     </tr>
                     {% endfor %}
                 </table>

@@ -845,7 +845,8 @@ def new_object(request, id=None):
         results.append({"informativnost": informativnost, "res": res, "probas": probas, "sinf": sinf, "allowability": allowability})
         # results.append([informativnost, res, probas, sinf, allowability])
 
-        saidov_results= Saidov(*column_values)
+        #saidov_results= Saidov(*column_values)
+        saidov_results= None
         # print(saidov_results)
         norma = dict()
         norma['yosh'] = '30'

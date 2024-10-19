@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <div class="section-title">
-                    <h2>Yangi bemor haqida qaror qabul qilish</h2>
+                    <h2>Bemorni jigar sirrozi va gepatokarsinomaga tashxislash</h2>
                     <div class="divider mx-auto my-4"></div>
                 </div>
             </div>
@@ -50,15 +50,32 @@
                     </tr>
                     <tr>
                         <td name="column_names">Anti HCV</td>
-                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                        <td>
+                            <select name="c[]">
+                                <option value=999>--------------------</option>
+                                <option value=0>manfiy</option>
+                                <option value=1>musbat</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td name="column_names">Anti HDV</td>
-                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                        <td> <select name="c[]">
+                                <option value=999>--------------------</option>
+                                <option value=0>manfiy</option>
+                                <option value=1>musbat</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td name="column_names">HBV RNK (sifat)</td>
-                        <td><input type="text" name="c[]" class="columns" value=""></td>
+                        <td>
+                            <select name="c[]">
+                                <option value=999>--------------------</option>
+                                <option value=2>manfiy</option>
+                                <option value=1>musbat</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td name="column_names">HDV RNK (miqdoriy)</td>
@@ -123,15 +140,16 @@
                     <tr>
                         <td name="column_names">Ultra tovush tekshiruvi</td>
                         <td><select name="c[]" id="">
+                                <option value=999>-----------------------</option>
                                 <option value="1">surunkali gepatit</option>
                                 <option value="2">surunkali gepatit + yog'li gepator</option>
-                                <option value="3">SP</option>
-                                <option value="4">SP + splenomegaliya</option>
-                                <option value="5">SP + splenomegaliya + PG</option>
-                                <option value="6">SP + splenomegaliya + PG + astsit</option>
-                                <option value="7">SP + obrazovaniya + splenomegaliya + PG</option>
-                                <option value="8">SP + obrazovaniya</option>
-                                <option value="9">SP + obrazovaniya + splenomegaliya + PG + astsit</option>
+                                <option value="3">jigar sirrozi</option>
+                                <option value="4">jigar sirrozi + splenomegaliya</option>
+                                <option value="5">jigar sirrozi + splenomegaliya + PG</option>
+                                <option value="6">jigar sirrozi + splenomegaliya + PG + astsit</option>
+                                <option value="7">jigar sirrozi + hosila + splenomegaliya + PG</option>
+                                <option value="8">jigar sirrozi + hosila</option>
+                                <option value="9">jigar sirrozi + hosila + splenomegaliya + PG + astsit</option>
                             </select>
                         </td>
                     </tr>
@@ -182,7 +200,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <div>Gepatit B - norma</div>
+                                            <div>Surunkali gepatit</div>
                                             <div>Jigar sirrozi</div>
                                         </div>
                                         <div id="inf" class="mt-2"></div>
@@ -197,7 +215,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-between">
-                                            <div>Gepatit B - norma</div>
+                                            <div>Surunkali gepatit</div>
                                             <div>Karsinoma</div>
                                         </div>
                                         <div id="inf13" class="mt-2"></div>
@@ -370,7 +388,7 @@
             doc.text(10, 55, 'Bemor: ' + document.getElementById('fio').value);
             doc.text(10, 75, 'Shifokor: ' + vrach);
             doc.text(10, 95, 'Sana: ' + new Date().toLocaleDateString());
-            doc.addImage(img, 'JPEG', 10, 110);
+            doc.addImage(img, 'JPEG', 10, 110, 560, 280);
 
             var base = doc.html(sdnatija, {
                 html2canvas: {
@@ -378,8 +396,8 @@
                 },
                 margin: [20, 5, 20, 5],
                 autoPaging: 'text',
-                x: 0,
-                y: 350,
+                x: 5,
+                y: 370,
                 width: 655,
                 windowWidth: 675,
                 callback: function (doc) {
